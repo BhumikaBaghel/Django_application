@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Profile</title>
+</head>
+<body>
+    <h1>Delete Profile</h1>
+    <form method="post" action="{% url 'frontpage' %}">
+        {% csrf_token %}
+        <p>Are you sure you want to delete your profile?</p>
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d0f0c0; /* Soft green background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        #profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        #profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #007BFF; /* Add a border around the profile picture */
+        }
+
+        #username {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333; /* Change the text color */
+        }
+
+        #update-button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition on hover */
+        }
+
+        #update-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional Styles */
+        .profile-info {
+            margin-top: 20px;
+        }
+
+        .profile-info p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #777; /* Adjust the color of additional information */
+        }
+    </style>
+</head>
+{% load static %}
+<body>
+    <div id="profile-container">
+        <img id="profile-pic" src="{% static 'images/debatrix.jpg' %}" alt="Profile Picture">
+        <div id="username">{{username}}</div>
+        <button id="update-button">Update Profile</button>
+        <button id="delete-button" onclick="call();">Delete Profile</button>
+
+
+        <!-- Add an input field for file upload -->
+    </div>
+    <script>
+        // JavaScript for updating profile photo
+        document.getElementById('update-button').addEventListener('click', function () {
+            // Redirect the user to the update_profile_picture page when the "Update Profile" button is clicked
+            window.location.href = '{% url "update_profile_picture" %}';
+        });
+         function call() {
+            // Redirect the user to the update_profile_picture page when the "Update Profile" button is clicked
+            window.location.href = '{% url "delete_profile" %}';
+        };
+        
+    </script>
+</body>
+</body>
+</html>

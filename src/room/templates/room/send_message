@@ -1,0 +1,212 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ room.name }} | {% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center">
+    <h1 class="text-3xl lg:text-6xl text-white">{{ room.name }}</h1>
+</div>
+
+<div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
+    <div class="chat-messages space-y-3" id="chat-messages">
+        <!-- Messages will be added here using JavaScript -->
+    </div>
+</div>
+
+<div class="lg:w-2/4 mt-6 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
+    <form id="message-form" class="flex">
+        <input type="text" name="content" class="flex-1 mr-3" placeholder="Your message..." id="chat-message-input">
+        <button class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700" id="chat-message-submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ room.slug|json_script:"json-roomname" }}
+{{ request.user.username|json_script:"json-username" }}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+    const userName = JSON.parse(document.getElementById('json-username').textContent);
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector('#chat-message-submit').click();
+        }
+    });
+
+    function appendMessage(username, content) {
+        document.querySelector('#chat-messages').innerHTML += ('<b>' + username + '</b>: ' + content + '<br>');
+        scrollToBottom();
+    }
+
+    function fetchMessages() {
+        fetch(`/rooms/${roomName}/get_messages/`)
+            .then(response => response.json())
+            .then(data => {
+                data.messages.forEach(message => {
+                    appendMessage(message.user, message.content);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching messages:', error);
+            });
+    }
+
+    document.querySelector('#message-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+
+        if (!message.trim()) {
+            alert('The message was empty!');
+            return;
+        }
+
+        fetch('/send_message/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+            body: JSON.stringify({
+                message: message,
+                username: userName,
+                room: roomName
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            appendMessage(data.message.user, data.message.content);
+        })
+        .catch(error => {
+            alert('Failed to send the message.');
+            console.error('Error:', error);
+        });
+
+        messageInputDom.value = '';
+    });
+
+    function scrollToBottom() {
+        let objDiv = document.getElementById('chat-messages');
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    scrollToBottom();
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Fetch new messages every 5 seconds (adjust the interval as needed)
+    setInterval(fetchMessages, 5000);
+</script>
+{% endblock %}
+
+
+
+
+// document.querySelector('#message-form').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+
+    //     const messageInputDom = document.querySelector('#chat-message-input');
+    //     const message = messageInputDom.value;
+
+    // document.getElementById('message-form').addEventListener('submit', function (event) {
+        //         event.preventDefault();
+        //         const messageInput = document.getElementById('chat-message-input');
+        //         const message = messageInput.value.trim();
+        //         if (message) {
+        //             sendMessage(message);
+        //             messageInput.value = '';
+        //         }
+        //     });
+    
+        // fetchExistingMessages();
+
+        //     function sendMessage(message) {
+            //      console.log('Room Name:', roomName);
+            //      console.log('Message:', message);
+            //      console.log('Username:', userName);
+            
+            //      if (!userName) {
+            //         alert('Username is missing!');
+            //         return;
+            //     }
+            
+            //     if (!roomName) {
+            //         alert('Room name is missing!');
+            //         return;
+            //     }
+            
+            //     if (!message) {
+            //         alert('The message was empty!');
+            //         return;
+            //     }
+                    
+            //     if (!message) {
+            //         alert('The message was empty!');
+            //         return;
+            //     }
+            
+            //     fetch('/rooms/', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'X-CSRFToken': getCookie('csrftoken'),
+            //         },
+            //         body: JSON.stringify({
+            //             message: message,
+            //             username: userName,
+            //             room: roomName
+            //         })
+            //     })
+            
+            
+            //   fetch('/rooms/', {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //       'X-CSRFToken': getCookie('csrftoken'),
+            //     },
+            //     body: JSON.stringify({
+            //       message: message,
+            //       username: userName,
+            //       room: roomName
+            //     })
+            //   })
+            //   .then(response => {
+            //     if (!response.ok) {
+            //       throw new Error('Network response was not ok');
+            //     }
+            //     return response.json();
+            //   })
+            //   .then(data => {
+            //     console.log('Server Response:', data);
+            
+            //     if (data.status === 'success') {
+            //       appendMessage(data.message.user, data.message.content);
+            //     } else {
+            //       console.error('Failed to send message:', data.message);
+            //     }
+            //   })
+            //   .catch(error => {
+            //     console.error('Error sending message:', error);
+            //   });
+            // };
+            
+            
