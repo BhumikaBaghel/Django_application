@@ -4,5 +4,7 @@
 3.![Screenshot (506)](https://github.com/Bhumika07092001/Django_application/assets/109783089/bef95804-8844-4c34-a518-398589af17a9)
 4.![Screenshot (502)](https://github.com/Bhumika07092001/Django_application/assets/109783089/3df46e22-66f6-4609-99b0-846fa5abf0a1)
 5.![Screenshot (504)](https://github.com/Bhumika07092001/Django_application/assets/109783089/2bc86d87-7aae-4158-bddd-90ca50c0b7e0)
+6.![Screenshot (511)](https://github.com/Bhumika07092001/Django_application/assets/109783089/9aff44d2-2edf-40de-b6ec-682e2558d83c)
+
 
 
