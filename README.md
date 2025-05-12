@@ -1,10 +1,11 @@
 # GUI SNAPSHOTS #
-1.![Screenshot (509)](https://github.com/Bhumika07092001/Django_application/assets/109783089/cb2a81af-0555-4a76-b145-79bf9939dfd3)
-2. ![Screenshot (507)](https://github.com/Bhumika07092001/Django_application/assets/109783089/e8ec94db-45f4-421c-babc-70870c06615d)
-3.![Screenshot (506)](https://github.com/Bhumika07092001/Django_application/assets/109783089/bef95804-8844-4c34-a518-398589af17a9)
-4.![Screenshot (502)](https://github.com/Bhumika07092001/Django_application/assets/109783089/3df46e22-66f6-4609-99b0-846fa5abf0a1)
-5.![Screenshot (504)](https://github.com/Bhumika07092001/Django_application/assets/109783089/2bc86d87-7aae-4158-bddd-90ca50c0b7e0)
-6.![Screenshot (511)](https://github.com/Bhumika07092001/Django_application/assets/109783089/9aff44d2-2edf-40de-b6ec-682e2558d83c)
+1![Screenshot (484)](https://github.com/user-attachments/assets/7ffd95bd-9665-4a71-a803-9464192d0311)
+2. ![Screenshot (485)](https://github.com/user-attachments/assets/86a405a5-6475-42be-af93-3e3c2c4fb849)
+3.![Screenshot (486)](https://github.com/user-attachments/assets/f4917bfe-0866-4c9f-a96d-7ea2246a185e)
+4.!![Screenshot (487)](https://github.com/user-attachments/assets/a124aaea-2fd2-46a8-bc10-746df225a94a)
+5.![Screenshot (489)](https://github.com/user-attachments/assets/781f6980-c1d1-4fc0-9716-fc54bceb2593)
+6.![Screenshot (488)](https://github.com/user-attachments/assets/5b4da6f5-7c33-46f1-959e-7cd6e051b2e8)
+
 
 
 
