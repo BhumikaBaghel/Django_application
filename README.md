@@ -1,5 +1,5 @@
 # GUI SNAPSHOTS #
-1![Screenshot (484)](https://github.com/user-attachments/assets/7ffd95bd-9665-4a71-a803-9464192d0311)
+1![Screenshot (521)](https://github.com/user-attachments/assets/11c190cb-610b-4f25-a739-a95b86473c3d)
 2. ![Screenshot (485)](https://github.com/user-attachments/assets/86a405a5-6475-42be-af93-3e3c2c4fb849)
 3.![Screenshot (486)](https://github.com/user-attachments/assets/f4917bfe-0866-4c9f-a96d-7ea2246a185e)
 4.!![Screenshot (487)](https://github.com/user-attachments/assets/a124aaea-2fd2-46a8-bc10-746df225a94a)
